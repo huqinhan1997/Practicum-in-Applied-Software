@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Register{% endblock %}
+{% block content %}
+    <body style="background-image: url({% static 'images/staff.jpg' %});background-size:100%;" >
+   <div class="container">
+       <div class="col-md-4 col-md-offset-4">
+         <form class='form-register' action="/register_staff/" method="post">
+
+             {% if message %}
+                 <div class="alert alert-warning">{{ message }}</div>
+             {% endif %}
+
+             {% csrf_token %}
+
+             <h2 class="text-center" style="color: whitesmoke">Sign Up</h2>
+              <div class="form-group" style="color: whitesmoke">
+                 {{ registerform_staff.id.label_tag }}
+                 {{ registerform_staff.id}}
+             </div>
+             <div class="form-group" style="color: whitesmoke">
+                 {{ registerform_staff.username.label_tag }}
+                 {{ registerform_staff.username}}
+             </div>
+             <div class="form-group" style="color: whitesmoke">
+                 {{ registerform_staff.password1.label_tag }}
+                 {{ registerform_staff.password1 }}
+             </div>
+             <div class="form-group" style="color: whitesmoke">
+                 {{ registerform_staff.password2.label_tag }}
+                 {{ registerform_staff.password2 }}
+             </div>
+             <div class="form-group" style="color: whitesmoke">
+                 {{ registerform_staff.age.label_tag }}
+                 {{ registerform_staff.age }}
+             </div>
+
+             <div class="form-group" style="color: black">
+                 {{ registerform_staff.gender }}
+             </div>
+
+             <button type="reset" class="btn btn-default pull-left">Reset</button>
+             <button type="submit" class="btn btn-primary pull-right">Submit</button>
+
+         </form>
+       </div>
+   </div> <!-- /container -->
+{% endblock %}
+
+

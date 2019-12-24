@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Register{% endblock %}
+{% block content %}
+    <!---body style="background-image: url({% static 'images/back.jpg' %});background-size:100%;" --->
+    <body style="background-image: url({% static 'images/staff_login.jpg' %});background-size:100%;" >
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			 <a href="/register_staff/"> <button type="button" class="btn btn-block btn-primary btn-lg">职工注册</button> </a>
+
+             <a href="/register_club/">  <button type="button" class="btn btn-primary btn-lg btn-block" >社团注册</button> </a>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

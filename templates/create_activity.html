@@ -1,0 +1,57 @@
+{% extends 'base_manager.html' %}
+{% load staticfiles %}
+{% block title %}Register{% endblock %}
+{% block content %}
+    <body style="background-image: url({% static 'images/staff.jpg' %});background-size:100%;" >
+   <div class="container">
+       <div class="col-md-4 col-md-offset-4">
+         <form class='form-register' action="/create_activity/" method="post">
+
+             {% if message %}
+                 <div class="alert alert-warning">{{ message }}</div>
+             {% endif %}
+
+             {% csrf_token %}
+
+             <h2 class="text-center" style="color: whitesmoke">组织活动</h2>
+              <div class="form-group" style="color: whitesmoke">
+                 {{ activity_form.id.label_tag }}
+                 {{ activity_form.id}}
+             </div>
+             <div class="form-group" style="color: whitesmoke">
+                 {{ activity_form.aname.label_tag }}
+                 {{ activity_form.aname}}
+             </div>
+             <div class="form-group" style="color: whitesmoke">
+                 {{ activity_form.cname.label_tag }}
+                 {{ activity_form.cname}}
+             </div>
+             <div class="form-group" style="color: whitesmoke">
+                 {{ activity_form.manager.label_tag }}
+                 {{ activity_form.manager }}
+             </div>
+             <div class="form-group" style="color: whitesmoke">
+                 {{ activity_form.location.label_tag }}
+                 {{ activity_form.location }}
+             </div>
+             {{form.event_date}}
+             <div class="form-group" style="color: whitesmoke">
+
+                 {{ activity_form.date.label_tag }}
+                 {{ activity_form.date }}
+             </div>
+             <div class="form-group" style="color: whitesmoke">
+                 {{ activity_form.nump.label_tag }}
+                 {{ activity_form.nump }}
+             </div>
+
+
+             <button type="reset" class="btn btn-default pull-left">Reset</button>
+             <button type="submit" class="btn btn-primary pull-right">Submit</button>
+
+         </form>
+       </div>
+   </div> <!-- /container -->
+{% endblock %}
+
+

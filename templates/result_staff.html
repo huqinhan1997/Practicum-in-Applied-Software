@@ -1,0 +1,43 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+{% block title %}Result{% endblock %}
+{% block content %}
+<body style="background-image: url({% static 'images/back.jpg' %});background-size:100%;" >
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<table class="table table-hover table-striped">
+				<thead>
+					<tr>
+						<th>
+							社团编号
+						</th>
+						<th>
+							社团名称
+						</th>
+						<th>
+							申请时间
+						</th>
+						<th>
+							状态
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+        {% for item in trandata %}
+    <tr>
+        <td>{{item.cid}} </td>
+        <td> {{item.cname}} </td>
+        <td> {{item.a_time}} </td>
+        <td> {{item.status}} </td>
+
+    </tr>
+        {% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

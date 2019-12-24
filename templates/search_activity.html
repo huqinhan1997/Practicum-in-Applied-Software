@@ -1,0 +1,74 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+{% block title %}Result{% endblock %}
+{% block content %}
+<body style="background-image: url({% static 'images/back.jpg' %});background-size:100%;" >
+
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="page-header">
+				<h1>
+				     所查询活动信息
+				</h1>
+			</div>
+             {% if error_msg %}
+                 <div class="alert alert-warning">{{ error_msg }}</div>
+             {% endif %}
+            <div id="C_S" class="table">  </div>
+			<table class="table table-striped table-hover" id="tra">
+				<thead>
+					<tr>
+						<th>
+							活动编号
+						</th>
+						<th>
+							活动名称
+						</th>
+						<th>
+							承办社团
+						</th>
+						<th>
+							活动负责人
+						</th>
+						<th>
+							预计参与人数
+						</th>
+						<th>
+							活动时间
+						</th>
+						<th>
+							活动地点
+						</th>
+						<th>
+							操作
+						</th>
+					</tr>
+				</thead>
+                <tbody>
+
+        {% for item in trandata %}
+    <tr>
+        <td>{{item.aid}} </td>
+        <td> {{item.aname}} </td>
+        <td> {{item.cname}} </td>
+        <td> {{item.manager}} </td>
+        <td> {{item.max_pp}} </td>
+        <td> {{item.date}} </td>
+        <td> {{item.location}} </td>
+        <td>
+        <form method="post" action="/join/" id="x" name="a">
+        {% csrf_token %}
+            <button type="submit" name= "{{item.aid}}"  value="1" class="btn btn-primary">报名</button>
+         </form>
+        </td>
+    </tr>
+        {% endfor %}
+        </tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base_staff.html' %}
+{% load staticfiles %}
+{% block title %}Homepage{% endblock %}
+{% block content %}
+<body style="background-image: url({% static 'images/back.jpg' %});background-size:100%;" >
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="jumbotron">
+				<h2>
+					欢迎使用职工社团管理系统--职工主页
+				</h2>
+
+
+			</div>
+			<h2>
+				公告
+			</h2>
+
+            {% for item in trandata %}
+			<div class="row">
+				<div class="col-md-4">
+					<div class="thumbnail">
+						<div class="caption">
+
+							<h3>
+								新活动:{{item.aname}}
+							</h3>
+							<p>
+							      社团{{item.cname}}发布了活动,活动时间是{{item.date}}
+							</p>
+						    <p>
+								  <form method="get" action="/search/" id="x" name="q">
+                                        {% csrf_token %}
+                                  <button type="submit" name= "q"  value="{{item.aname}}" class="btn btn-primary">详情</button>
+                                 </form>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+            {% endfor %}
+
+
+		</div>
+	</div>
+</div>
+
+{% endblock %}
